@@ -1,11 +1,11 @@
-public class MyQueue <T>{
+public class Fila <T>{
     private T[] data;
     private int head = -1;
     private int tail = -1;
 
     private int size;
 
-    public MyQueue(int size){
+    public Fila(int size){
         this.size = size;
         data = (T[]) new Object[size];
     }

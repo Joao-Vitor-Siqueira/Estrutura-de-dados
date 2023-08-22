@@ -1,9 +1,9 @@
-public class MyStack <T>{
+public class Pilha <T>{
     private T[] data;
     private int top;
     private int size;
 
-    public MyStack(int size){
+    public Pilha(int size){
         this.size = size;
         data = (T[]) new Object[size];
         top = -1;
