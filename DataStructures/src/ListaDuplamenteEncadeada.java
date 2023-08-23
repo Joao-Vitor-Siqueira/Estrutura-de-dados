@@ -57,8 +57,55 @@ public class ListaDuplamenteEncadeada <T> {
         }
         size++;
     }
+    public void add(T value,int pos){
+        if(pos <= size){
+            Node<T> newNode;
+            if(pos == size){
+                newNode = new Node<>(value,top,null);
+                top.setNext(newNode);
+                top = newNode;
+            }
+            else{
+                Node<T> next = getNode(pos);
+                Node<T> previous = getNode(pos - 1);
+                newNode = new Node<>(value,previous,next);
+                if(previous == null){
+                    base = newNode;
+                }
+                else {
+                    previous.setNext(newNode);
+                }
+                next.setPrevious(newNode);
+            }
+            size++;
+        }
+
+    }
+    public void remove(int pos){
+        if(pos <= size && pos >= 0){
+            Node<T> node = getNode(pos);
+            remove(node);
+            size--;
+        }
+    }
+    private void remove(Node<T> node){
+        Node<T> previous = node.getPrevious();
+        Node<T> next = node.getNext();
+        if(previous == null){
+            base = next;
+            next.setPrevious(null);
+            return;
+        }
+        if(next == null){
+            top = previous;
+            previous.setNext(null);
+            return;
+        }
+        previous.setNext(next);
+        next.setPrevious(previous);
+    }
     public Node<T> getNode(int pos){
-        if(pos >= size || pos < 1) return null;
+        if(pos >= size || pos < 0) return null;
         int half = size/2;
         Node<T> item;
         if(pos < half){
@@ -77,23 +124,34 @@ public class ListaDuplamenteEncadeada <T> {
         }
         return item;
     }
-
+    public void clear(){
+        base = null;
+        top = null;
+        size = 0;
+    }
     public boolean isEmpty(){
         return size == 0;
     }
-
+    public T get(int pos){
+        return getNode(pos).getData();
+    }
+    public void set(T value,int pos){
+        getNode(pos).setData(value);
+    }
     public String toString() {
         String lista = "[";
-        int i = 0;
-        Node<T> item = base;
-        while (true){
-           lista += item.getData();
-           if(i == size - 1){
-               break;
-           }
-           lista += ",";
-           item = item.getNext();
-           i++;
+        if(size > 0){
+            int i = 0;
+            Node<T> item = base;
+            while (true){
+                lista += item.getData();
+                if(i == size - 1){
+                    break;
+                }
+                lista += ",";
+                item = item.getNext();
+                i++;
+            }
         }
         lista += "]";
         return lista;
