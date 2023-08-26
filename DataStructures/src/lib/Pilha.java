@@ -1,3 +1,5 @@
+package lib;
+
 public class Pilha <T>{
     private T[] data;
     private int top;
@@ -56,7 +58,7 @@ public class Pilha <T>{
                 stack += ",";
             }
         }
-        stack += "]" + "  Top: " + top;
+        stack += "]";
         return stack;
     }
 }

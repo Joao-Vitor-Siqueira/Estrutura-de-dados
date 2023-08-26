@@ -1,3 +1,5 @@
+package lib;
+
 public class Fila <T>{
     private T[] data;
     private int head = -1;
@@ -48,6 +50,7 @@ public class Fila <T>{
             return true;
         }
         return head == tail + 1;
+
     }
 
     public void clear(){

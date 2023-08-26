@@ -1,3 +1,5 @@
+package lib;
+
 public class Lista <T>{
     private T[] data;
     int size;
@@ -14,7 +16,7 @@ public class Lista <T>{
 
     public void add(T item){
         if(isFull()){
-            System.out.println("A fila está cheia!");
+            System.out.println("A lista está cheia!");
         }
         else {
             int i = 0;
@@ -32,7 +34,7 @@ public class Lista <T>{
             return;
         }
         if(isFull()){
-            System.out.println("A fila está cheia!");
+            System.out.println("A lista está cheia!");
         }
         T element = data[pos];
         data[pos] = item;

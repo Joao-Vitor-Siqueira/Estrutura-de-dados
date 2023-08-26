@@ -1,3 +1,5 @@
+package lib;
+
 public class ListaDuplamenteEncadeada <T> {
 
     public ListaDuplamenteEncadeada(){
