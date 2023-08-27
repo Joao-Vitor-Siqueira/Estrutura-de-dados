@@ -1,5 +1,7 @@
-import lib.Lista;
-import lib.Fila;
+package Pjbl1;
+
+import Estruturas.Lista;
+import Estruturas.Fila;
 
 import java.util.Arrays;
 
@@ -21,23 +23,27 @@ public class FloodfillFila {
     private Fila<Lista<Integer>> fila;
 
     private int initialValue;
+
+    private void setNewValue(int newValue) {
+        this.newValue = newValue;
+    }
+
+    private int newValue;
     public FloodfillFila(){
-        initialValue = -1;
         fila = new Fila<>(100);
     }
 
     public void setPos(int row,int col,int newValue){
-        if(initialValue == -1){
-            setInitialValue(img[row][col]);
-        }
+        setInitialValue(img[row][col]);
+        setNewValue(newValue);
         Lista<Integer> pos = new Lista<>(2);
         pos.add(row);
         pos.add(col);
         fila.add(pos);
-        fill(newValue);
+        fill();
     }
 
-    private void fill(int newValue){
+    private void fill(){
         if (fila.isEmpty()) return;
         Lista<Integer> pos = fila.remove();
         int row = pos.getData(0);
@@ -70,7 +76,7 @@ public class FloodfillFila {
                 fila.add(right);
             }
         }
-        fill(newValue);
+        fill();
     }
 
     private void setInitialValue(int value){

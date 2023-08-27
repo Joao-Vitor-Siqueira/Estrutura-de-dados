@@ -1,4 +1,4 @@
-package lib;
+package Estruturas;
 
 public class Fila <T>{
     private T[] data;

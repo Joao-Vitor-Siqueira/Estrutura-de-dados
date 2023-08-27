@@ -1,4 +1,4 @@
-package lib;
+package Estruturas;
 
 public class Lista <T>{
     private T[] data;

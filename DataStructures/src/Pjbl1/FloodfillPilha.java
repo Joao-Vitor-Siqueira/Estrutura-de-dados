@@ -1,8 +1,7 @@
-import lib.Lista;
-import lib.Pilha;
-
+package Pjbl1;
+import Estruturas.Lista;
+import Estruturas.Pilha;
 import java.util.Arrays;
-import java.util.Objects;
 
 public class FloodfillPilha {
     private int[][] img = {
@@ -21,24 +20,28 @@ public class FloodfillPilha {
 
     private Pilha<Lista<Integer>> pilha;
 
+    private void setNewValue(int newValue) {
+        this.newValue = newValue;
+    }
+
+    private int newValue;
+
     private int initialValue;
     public FloodfillPilha(){
-        initialValue = -1;
         pilha = new Pilha<>(100);
     }
 
     public void setPos(int row,int col,int newValue){
-        if(initialValue == -1){
-            setInitialValue(img[row][col]);
-        }
+        setInitialValue(img[row][col]);
+        setNewValue(newValue);
         Lista<Integer> pos = new Lista<>(2);
         pos.add(row);
         pos.add(col);
         pilha.push(pos);
-        fill(newValue);
+        fill();
     }
 
-    private void fill(int newValue){
+    private void fill(){
         if (pilha.isEmpty()) return;
         Lista<Integer> pos = pilha.pop();
         int row = pos.getData(0);
@@ -71,7 +74,7 @@ public class FloodfillPilha {
                    pilha.push(right);
                }
             }
-        fill(newValue);
+        fill();
     }
 
     private void setInitialValue(int value){

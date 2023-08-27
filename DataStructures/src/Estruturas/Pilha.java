@@ -1,4 +1,4 @@
-package lib;
+package Estruturas;
 
 public class Pilha <T>{
     private T[] data;
