@@ -1,16 +1,22 @@
 import Estruturas.ArvoreBinaria;
+import Estruturas.ListaDuplamenteEncadeada;
+import Estruturas.TabelaHashEncadeada;
+import Estruturas.TabelaHashLinear;
+import Model.Aluno;
 import Pjbl1.*;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArvoreBinaria arvore = new ArvoreBinaria();
-        arvore.add(5);
-        arvore.add(8);
-        arvore.add(3);
-        arvore.add(2);
-        arvore.add(1);
-        arvore.add(9);
-        arvore.add(6);
-        arvore.print2D();
+        TabelaHashEncadeada table = new TabelaHashEncadeada(10);
+        table.insert(new Aluno("jeba"));
+        table.insert(new Aluno("jeba"));
+        table.insert(new Aluno(1,"jair"));
+        table.insert(new Aluno(15,"bolso"));
+        table.insert(new Aluno(26,"lula"));
+        System.out.println(table.search(15));
+        System.out.println(table);
+
     }
 }

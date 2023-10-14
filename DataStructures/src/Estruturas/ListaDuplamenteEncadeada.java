@@ -44,7 +44,12 @@ public class ListaDuplamenteEncadeada <T> {
 
     Node<T> base;
     Node<T> top;
-    int size;
+
+    public int getSize() {
+        return size;
+    }
+
+    private int size;
 
     public void add(T value){
         if (isEmpty()){
@@ -83,24 +88,28 @@ public class ListaDuplamenteEncadeada <T> {
         }
 
     }
-    public void remove(int pos){
+    public T remove(int pos){
+        if (size == 0) return null;
+        Node<T> node = null;
         if(pos <= size && pos >= 0){
-            Node<T> node = getNode(pos);
+            node = getNode(pos);
             remove(node);
             size--;
         }
+        if (node.data != null) return node.data;
+        return null;
     }
     private void remove(Node<T> node){
         Node<T> previous = node.getPrevious();
         Node<T> next = node.getNext();
         if(previous == null){
             base = next;
-            next.setPrevious(null);
+            if(next != null && next.getPrevious() != null) next.setPrevious(null);
             return;
         }
         if(next == null){
             top = previous;
-            previous.setNext(null);
+            if(previous != null && previous.getNext() != null) previous.setNext(null);
             return;
         }
         previous.setNext(next);
@@ -150,7 +159,7 @@ public class ListaDuplamenteEncadeada <T> {
                 if(i == size - 1){
                     break;
                 }
-                lista += ",";
+                lista += " -> ";
                 item = item.getNext();
                 i++;
             }
