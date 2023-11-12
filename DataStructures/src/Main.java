@@ -13,16 +13,6 @@ public class Main {
         //QuickSort quickSort = new QuickSort();
         //quickSort.sort(arr,0, arr.length - 1);
     }
-
-    public static void printArr(int[] arr){
-        System.out.print("[");
-        for (int i = 0; i < arr.length; i ++){
-            System.out.print(arr[i]);
-            if (i == arr.length - 1) break;
-            System.out.print(",");
-        }
-        System.out.print("]\n");
-    }
 }
 
 
